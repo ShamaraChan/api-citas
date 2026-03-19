@@ -42,6 +42,27 @@ app.get('/api/citas', async (req, res) => {
   }
 });
 
+// POST /api/doctores
+app.post('/api/doctores', async (req, res) => {
+  try {
+    const { nombre, especialidad } = req.body;
+
+    if (!nombre || !especialidad) {
+      return res.status(400).json({ message: "Faltan campos requeridos" });
+    }
+
+    const [result] = await db.query(`
+      INSERT INTO doctores (nombre, especialidad)
+      VALUES (?, ?)
+    `, [nombre, especialidad]);
+
+    res.status(201).json({ message: "Doctor creado correctamente", id: result.insertId });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // POST /api/citas
 app.post('/api/citas', async (req, res) => {
   try {
