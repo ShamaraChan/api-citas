@@ -14,10 +14,4 @@ const db = mysql.createPool({
 
 module.exports = db;
 
-///Reemplaza tu `db.js` con este. Ahora necesitas crear un archivo `.env` en la raíz de tu proyecto con los valores de Railway:
 
-MYSQLHOST=mysql.railway.internal
-MYSQLUSER=root
-MYSQLPASSWORD=kfUNGHRsqGwZdfVviANVpBWWcBImpLja
-MYSQLDATABASE=railway
-MYSQLPORT=3306
